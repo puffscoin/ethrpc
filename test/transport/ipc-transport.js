@@ -4,7 +4,7 @@
 
 var assert = require("chai").assert;
 var os = require("os");
-var StubServer = require("ethereumjs-stub-rpc-server");
+var StubServer = require("puffscoinjs-stub-rpc-server");
 var IpcTransport = require("../../src/transport/ipc-transport.js");
 
 var ipcAddress = (os.type() === "Windows_NT") ? "\\\\.\\pipe\\TestRPC" : "testrpc.ipc";
