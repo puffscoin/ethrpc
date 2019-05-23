@@ -1,2 +1,2 @@
-var ethrpc = global.ethrpc || require("./src");
-global.ethrpc = ethrpc;
+var puffsrpc = global.puffsrpc || require("./src");
+global.puffsrpc = puffsrpc;
