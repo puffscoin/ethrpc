@@ -8,7 +8,7 @@ function setCoinbase(callback) {
     dispatch(eth_coinbase(null, function (err, coinbase) {
       if (err) return callback(err);
       if (coinbase != null) {
-        dispatch({ type: "SET_COINBASE", address: speedomatic.formatEthereumAddress(coinbase) });
+        dispatch({ type: "SET_COINBASE", address: speedomatic.formatPuffscoinAddress(coinbase) });
       }
       callback(null);
     }));
