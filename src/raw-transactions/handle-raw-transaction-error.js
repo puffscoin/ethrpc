@@ -4,7 +4,7 @@ var RPCError = require("../errors/rpc-error");
 
 /**
  * Validate and submit a signed raw transaction to the network.
- * @param {Object} rawTransactionResponse Error response from the Ethereum node.
+ * @param {Object} rawTransactionResponse Error response from the PUFFScoin node.
  * @return {Object|null} Error or null if retrying due to low nonce.
  */
 function handleRawTransactionError(rawTransactionResponse) {
