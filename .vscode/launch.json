@@ -32,7 +32,7 @@
             "port": 9229,
             "sourceMaps": false,
             "localRoot": "${workspaceRoot}",
-            "remoteRoot": "/ethrpc"
+            "remoteRoot": "/puffsrpc"
         }
     ]
 }
