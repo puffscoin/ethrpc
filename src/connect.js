@@ -14,7 +14,7 @@ var internalState = require("./internal-state");
 var RPCError = require("./errors/rpc-error");
 
 /**
- * Initiates a connection to Ethereum.  This must be called before any other methods are called.
+ * Initiates a connection to PUFFScoin.  This must be called before any other methods are called.
  *
  * @typedef configuration
  * @type {object}
