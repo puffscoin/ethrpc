@@ -9,7 +9,7 @@ var RPCError = require("../errors/rpc-error");
 /**
  * Use the number of transactions from this account to set the nonce.
  * @param {Object} packaged Packaged transaction.
- * @param {string} address The sender's Ethereum address.
+ * @param {string} address The sender's PUFFScoin address.
  * @param {function} callback Callback function.
  * @return {Object} Packaged transaction with nonce set.
  */
