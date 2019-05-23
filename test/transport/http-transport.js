@@ -3,7 +3,7 @@
 "use strict";
 
 var assert = require("chai").assert;
-var StubServer = require("ethereumjs-stub-rpc-server");
+var StubServer = require("puffscoinjs-stub-rpc-server");
 var HttpTransport = require("../../src/transport/http-transport.js");
 
 describe("transport/http-transport", function () {
