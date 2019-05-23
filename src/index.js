@@ -1,14 +1,14 @@
 "use strict";
 
-var createEthrpc = require("./create-ethrpc");
+var createPuffsrpc = require("./create-puffsrpc");
 var reducer = require("./reducers");
 var composeReducers = require("./reducers/compose-reducers");
 var version = require("./version");
 
-var ethrpc = createEthrpc(reducer);
+var puffsrpc = createPuffsrpc(reducer);
 ethrpc.withCustomReducer = function (customReducer) {
-  return createEthrpc(composeReducers(customReducer, reducer));
+  return createPuffsrpc(composeReducers(customReducer, reducer));
 };
 
-ethrpc.lib_version = version;
+puffsrpc.lib_version = version;
 module.exports = ethrpc;
