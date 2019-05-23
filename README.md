@@ -17,7 +17,7 @@ After installing, to use it with Node, require it and call connect:
 ```javascript
 var rpc = require("ethrpc");
 var connectionConfiguration = {
-  httpAddresses: ["http://localhost:8545"], // optional, default empty array
+  httpAddresses: ["http://localhost:11363"], // optional, default empty array
   wsAddresses: [], // optional, default empty array
   ipcAddresses: [], // optional, default empty array
   networkID: 3, // optional, used to verify connection to the intended network (blockchain)
