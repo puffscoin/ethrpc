@@ -18,7 +18,7 @@ function transact(payload, privateKeyOrSigner, accountType, onSent, onSuccess, o
   return function (dispatch, getState) {
     if (payload.uuid == null) payload.uuid = uuid.v4();
     var debug = getState().debug;
-    if (debug.tx) console.log("ethrpc.transact payload:", payload);
+    if (debug.tx) console.log("puffsrpc.transact payload:", payload);
     if (!isFunction(onSent) || !isFunction(onSuccess) || !isFunction(onFailed)) {
       return console.error("onSent, onSuccess, and onFailed callbacks not found", payload, privateKeyOrSigner, accountType, onSent, onSuccess, onFailed);
     }
