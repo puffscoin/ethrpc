@@ -1,21 +1,19 @@
-# ethrpc
+# puffsrpc
 
-[![Build Status](https://travis-ci.org/ethereumjs/ethrpc.svg)](https://travis-ci.org/ethereumjs/ethrpc) [![Coverage Status](https://coveralls.io/repos/ethereumjs/ethrpc/badge.svg?branch=master&service=github)](https://coveralls.io/github/ethereumjs/ethrpc?branch=master) [![npm version](https://badge.fury.io/js/ethrpc.svg)](http://badge.fury.io/js/ethrpc)
-
-JavaScript RPC communication with the Ethereum network.
+JavaScript RPC communication with the PUFFScoin network.
 
 ## Usage
 
-ethrpc can be installed using npm:
+puffsrpc can be installed using npm:
 
 ```
-npm install ethrpc
+npm install puffsrpc
 ```
 
 After installing, to use it with Node, require it and call connect:
 
 ```javascript
-var rpc = require("ethrpc");
+var rpc = require("puffsrpc");
 var connectionConfiguration = {
   httpAddresses: ["http://localhost:11363"], // optional, default empty array
   wsAddresses: [], // optional, default empty array
@@ -26,14 +24,14 @@ var connectionConfiguration = {
 };
 rpc.connect(connectionConfiguration, function (err) {
   if (err) {
-    console.error("Failed to connect to Ethereum node.");
+    console.error("Failed to connect to PUFFScion node.");
   } else {
-    console.log("Connected to Ethereum node!");
+    console.log("Connected to PUFFScoin node!");
   }
 });
 ```
 
-A minified, browserified file `dist/ethrpc.min.js` is included for use in the browser.  Including this file simply attaches an `ethrpc` object to `window`:
+A minified, browserified file `dist/puffsrpc.min.js` is included for use in the browser.  Including this file simply attaches an `puffsrpc` object to `window`:
 
 ```html
 <script src="dist/ethrpc.min.js" type="text/javascript"></script>
@@ -48,7 +46,7 @@ rpc.raw("net_peerCount");
 "0x10"
 ```
 
-Almost all commands listed in the [Ethereum JSON RPC](https://github.com/ethereum/wiki/wiki/JSON-RPC) wiki page have named wrappers:
+Almost all commands listed in the [PUFFScoin JSON RPC](http://puffscoin.leafycauldronapothecary.com/puffwiki/blockchain-protocols/json-rpc-api/) wiki page have named wrappers:
 
 
 ```javascript
@@ -61,7 +59,7 @@ rpc.eth.blockNumber();
 
 ### Block and Log Notifications
 
-If you want to subscribe to new blocks or new logs you can get access to a [block and log streamer](https://github.com/ethereumjs/ethereumjs-blockstream) via:
+If you want to subscribe to new blocks or new logs you can get access to a [block and log streamer](https://github.com/puffscoin/puffscoinjs-blockstream) via:
 
 ```javascript
 var blockStream = rpc.getBlockStream();
@@ -148,7 +146,7 @@ The `params` and `signature` fields are required if your function accepts parame
 
 ## Tests
 
-Unit tests are included in `test/ethrpc.js`, and can be run using npm:
+Unit tests are included in `test/puffsrpc.js`, and can be run using npm:
 
 ```
 npm test
@@ -157,7 +155,7 @@ npm test
 Alternatively, you can run the tests inside of a docker container.  Docker layer caching is leveraged to make it so the build is very fast after the first time (unless you change dependencies):
 
 ```
-docker build -t ethrpc . && docker run --rm ethrpc
+docker build -t puffsrpc . && docker run --rm puffsrpc
 ```
 
 ## Internal Architecture
