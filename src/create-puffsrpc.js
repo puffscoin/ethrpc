@@ -47,7 +47,7 @@ var disconnect = require("./disconnect");
 var internalState = require("./internal-state");
 var constants = require("./constants");
 
-var createEthrpc = function (reducer) {
+var createPuffsrpc = function (reducer) {
   var store = createStore(reducer, thunkSubscribeEnhancer);
   var dispatch = store.dispatch;
   return {
@@ -244,4 +244,4 @@ var createEthrpc = function (reducer) {
   };
 };
 
-module.exports = createEthrpc;
+module.exports = createPuffsrpc;
