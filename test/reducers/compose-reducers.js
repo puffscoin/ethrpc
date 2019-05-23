@@ -7,7 +7,7 @@ var assign = require("lodash").assign;
 var defaultReducer = require("../../src/reducers");
 var composeReducers = require("../../src/reducers/compose-reducers");
 var initialState = {
-  ethrpc: require("../../src/reducers/initial-state"),
+  puffsrpc: require("../../src/reducers/initial-state"),
   boom: false,
   todos: [],
 };
@@ -50,23 +50,23 @@ describe("reducers/compose-reducers", function () {
     });
   };
   test({
-    description: "composed reducers should update ethrpc and external state",
+    description: "composed reducers should update puffsrpc and external state",
     params: {
       customReducer: customReducer,
       reducer: defaultReducer,
     },
     assertions: function (reducer) {
-      var state = reducer(initialState, { type: "SET_NETWORK_ID", networkID: "3" });
+      var state = reducer(initialState, { type: "SET_NETWORK_ID", networkID: "420" });
       state = reducer(state, { type: "BOOM" });
       state = reducer(state, { type: "ADD_TODO", text: "breakdance" });
       assert.deepEqual(state, assign({}, initialState, {
         boom: true,
         todos: ["breakdance"],
-        ethrpc: assign({}, initialState.ethrpc, { networkID: "3" }),
+        puffsrpc: assign({}, initialState.puffsrpc, { networkID: "420" }),
       }));
       state = reducer(state, { type: "RESET_STATE" });
       assert.deepEqual(state, assign({}, state, {
-        ethrpc: assign({}, state.ethrpc, initialState.ethrpc),
+        puffsrpc: assign({}, state.puffsrpc, initialState.puffsrpc),
       }));
     },
   });
