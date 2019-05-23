@@ -1,10 +1,10 @@
 FROM node:6.9
 
-COPY package.json /ethrpc/package.json
-WORKDIR /ethrpc
+COPY package.json /puffsrpc/package.json
+WORKDIR /puffsrpc
 RUN npm install
 
-COPY . /ethrpc
+COPY . /puffsrpc
 RUN mkdir dist
 
-ENTRYPOINT [ "/ethrpc/node_modules/.bin/mocha" ]
+ENTRYPOINT [ "/puffsrpc/node_modules/.bin/mocha" ]
