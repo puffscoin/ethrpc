@@ -34,12 +34,12 @@ rpc.connect(connectionConfiguration, function (err) {
 A minified, browserified file `dist/puffsrpc.min.js` is included for use in the browser.  Including this file simply attaches an `puffsrpc` object to `window`:
 
 ```html
-<script src="dist/ethrpc.min.js" type="text/javascript"></script>
+<script src="dist/puffsrpc.min.js" type="text/javascript"></script>
 ```
 
 ### Basic RPC
 
-The `raw` method allows you to send in commands that won't be parsed/mangled by ethrpc.  (Similar to sending RPC requests with cURL.)
+The `raw` method allows you to send in commands that won't be parsed/mangled by puffsrpc.  (Similar to sending RPC requests with cURL.)
 
 ```javascript
 rpc.raw("net_peerCount");
@@ -100,7 +100,7 @@ var address = rpc.eth.getTransactionReceipt(txHash).contractAddress;
 "0x86fb6d1f1bd78cc13c6354b6436b6ea0c144de2e"
 ```
 
-`getCode` downloads code from a contract already on the Ethereum network:
+`getCode` downloads code from a contract already on the Puffscoin network:
 
 ```javascript
 var contractCode = rpc.eth.getCode("0x86fb6d1f1bd78cc13c6354b6436b6ea0c144de2e");
