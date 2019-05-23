@@ -8,7 +8,7 @@ function onNewBlock(newBlock, cb) {
   return function (dispatch, getState) {
     var callback = cb || logError;
     if (newBlock === null) return callback(null);
-    if (getState().debug.broadcast) console.log("[ethrpc] New block:", newBlock.hash);
+    if (getState().debug.broadcast) console.log("[puffsrpc] New block:", newBlock.hash);
 
     dispatch(reprocessTransactions());
     setTimeout(function () {
