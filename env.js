@@ -4,8 +4,8 @@ var ethrpc = global.ethrpc = require("./src");
 var logError = global.logError = require("./src/utils/log-error");
 
 var connectOptions = global.connectOptions = {
-  httpAddresses: ["http://127.0.0.1:8545"],
-  wsAddresses: ["ws://127.0.0.1:8546"],
+  httpAddresses: ["http://127.0.0.1:11363"],
+  wsAddresses: ["ws://127.0.0.1:11364"],
   ipcAddresses: [],
   errorHandler: logError,
 };
