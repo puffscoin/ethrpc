@@ -5,7 +5,7 @@
 var assert = require("chai").assert;
 var async = require("async");
 var os = require("os");
-var StubServer = require("ethereumjs-stub-rpc-server");
+var StubServer = require("puffscoinjs-stub-rpc-server");
 var Transporter = require("../../src/transport/transporter");
 
 describe("transport/transporter", function () {
