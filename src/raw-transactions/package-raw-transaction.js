@@ -7,7 +7,7 @@ var packageRequest = require("../encode-request/package-request");
 /**
  * Package a raw transaction.
  * @param {Object} payload Static API data with "params" and "from" set.
- * @param {string} address The sender's Ethereum address.
+ * @param {string} address The sender's PUFFScoin address.
  * @param {number} networkID The network (chain) ID to which the transaction will be submitted.
  * @param {function} callback Callback function.
  * @return {Object} Packaged transaction.
@@ -20,7 +20,7 @@ function packageRawTransaction(payload, address, networkID, callback) {
       if (networkID && speedomatic.encodeNumberAsJSNumber(networkID) > 0 && speedomatic.encodeNumberAsJSNumber(networkID) < 109) {
         packaged.chainId = speedomatic.encodeNumberAsJSNumber(networkID);
       }
-      if (getState().debug.tx) console.log("[ethrpc] packaged raw transaction", JSON.stringify(packaged, null, 2));
+      if (getState().debug.tx) console.log("[puffsrpc] packaged raw transaction", JSON.stringify(packaged, null, 2));
       callback(null, packaged);
     }));
   };
