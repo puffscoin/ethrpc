@@ -3,7 +3,7 @@
 "use strict";
 
 var assert = require("chai").assert;
-var ethereumjsAbi = require("ethereumjs-abi");
+var puffscoinjsAbi = require("puffscoinjs-abi");
 var os = require("os");
 var helpers = require("./helpers");
 var rpc = require("../src");
@@ -44,7 +44,7 @@ describe("tests that only work against stub server", function () {
             errorHandler: function (error) { assert.fail(error); },
           }, function (error) {
             assert.isNotNull(error);
-            assert.strictEqual(error.message, "Unable to connect to an Ethereum node via any transport. (Web3, HTTP, WS, IPC).");
+            assert.strictEqual(error.message, "Unable to connect to a PUFFScoin node via any transport. (Web3, HTTP, WS, IPC).");
             done();
           });
         });
