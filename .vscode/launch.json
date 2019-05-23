@@ -16,16 +16,16 @@
                 "${workspaceRoot}/test/"
             ],
             // "env": {
-            //     "ETHRPC_TEST_HTTP_ADDRESS": "https://eth3.augur.net:443",
-            //     "ETHRPC_TEST_WS_ADDRESS": "wss://ws.augur.net:443"
+            //     "PUFFSRPC_TEST_HTTP_ADDRESS": "https://eth3.augur.net:443",
+            //     "PUFFSRPC_TEST_WS_ADDRESS": "wss://ws.augur.net:443"
             // },
             "internalConsoleOptions": "openOnSessionStart",
             "outFiles": [
-                "${workspaceRoot}/node_modules/ethereumjs-blockstream/**/*.js"
+                "${workspaceRoot}/node_modules/puffscoinjs-blockstream/**/*.js"
             ]
         },
         {
-            // docker run --rm -p 9229:9229 --name=ethrpc ethrpc --debug-brk --inspect test/stub-node-only.js
+            // docker run --rm -p 9229:9229 --name=puffsrpc puffsrpc --debug-brk --inspect test/stub-node-only.js
             "type": "node2",
             "request": "attach",
             "name": "Attach to Docker",
