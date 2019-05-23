@@ -1,7 +1,7 @@
 "use strict";
 
 var speedomatic = require("speedomatic");
-var Transaction = require("ethereumjs-tx");
+var Transaction = require("puffscoinjs-tx");
 var sha3 = require("../utils/sha3");
 var RPCError = require("../errors/rpc-error");
 
