@@ -114,7 +114,7 @@ function Transporter(configuration, messageHandler, debugLogging, callback) {
     tryTransportType(nextTransportType);
   }, function (foundTransport) {
     if (!foundTransport) {
-      return callback(new Error("Unable to connect to an Ethereum node via any transport. (Web3, HTTP, WS, IPC)."));
+      return callback(new Error("Unable to connect to a PUFFScoin node via any transport. (Web3, HTTP, WS, IPC)."));
     }
     storeTransport(this.internalState, foundTransport);
     callback(null, this);
