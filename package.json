@@ -11,7 +11,7 @@
     "coverage": "istanbul cover --include-all-sources --root ./src ./node_modules/mocha/bin/_mocha test/",
     "link": "npm link speedomatic puffscoinjs-blockstream",
     "genversion": "genversion src/version.js",
-    "build": "mkdirp dist && browserify ./exports.js -o ./dist/ethrpc.js && uglifyjs ./dist/ethrpc.js -o ./dist/ethrpc.min.js",
+    "build": "mkdirp dist && browserify ./exports.js -o ./dist/puffsrpc.js && uglifyjs ./dist/puffsrpc.js -o ./dist/puffsrpc.min.js",
     "postinstall": "postinstall-build --only-as-dependency dist",
     "prepublishOnly": "postinstall-build dist",
     "preversion": "npm test",
