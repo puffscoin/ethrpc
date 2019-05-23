@@ -34,7 +34,7 @@ function encodePrimitive(primitive) {
   if (typeof primitive === "number") return encodeNumber(primitive);
   if (primitive instanceof Array) return encodeArray(primitive);
   if (typeof primitive === "object") return encodeObject(primitive);
-  if (isFunction(primitive)) throw new Error("Cannot encode a function to be sent to Ethereum.");
+  if (isFunction(primitive)) throw new Error("Cannot encode a function to be sent to PUFFScoin.");
   throw new Error("Attempted to encode an unsupported type: " + typeof primitive);
 }
 
