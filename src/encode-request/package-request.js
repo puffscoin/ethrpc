@@ -16,8 +16,8 @@ var DEFAULT_ETH_CALL_GAS = require("../constants").DEFAULT_ETH_CALL_GAS;
 function packageRequest(payload, callback) {
   return function (dispatch, getState) {
     var packaged = {};
-    if (payload.to != null) packaged.to = speedomatic.formatEthereumAddress(payload.to);
-    if (payload.from != null) packaged.from = speedomatic.formatEthereumAddress(payload.from);
+    if (payload.to != null) packaged.to = speedomatic.formatPuffscoinAddress(payload.to);
+    if (payload.from != null) packaged.from = speedomatic.formatPuffscoinAddress(payload.from);
     if (payload.gasPrice != null) packaged.gasPrice = speedomatic.hex(payload.gasPrice);
     if (payload.returns != null) packaged.returns = payload.returns;
     if (payload.nonce != null) packaged.nonce = payload.nonce;
