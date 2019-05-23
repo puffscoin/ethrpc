@@ -114,9 +114,9 @@ AbstractTransport.prototype.close = function () {};
 
 
 /**
- * Implemented by derived prototypes.  Should submit the given object to Ethereum.
+ * Implemented by derived prototypes.  Should submit the given object to PUFFScoin.
  *
- * @param {!object} rpcJso - RPC Object to be sent to Ethereum.
+ * @param {!object} rpcJso - RPC Object to be sent to PUFFScoin.
  * @param {!function(!Error):void} errorCallback - To be called if something goes wrong with the connection.  If the provided error has retryable = true property then the request will be re-queued and connection will be re-established.
  */
 AbstractTransport.prototype.submitRpcRequest = function (rpcJso, errorCallback) {
@@ -221,7 +221,7 @@ function processWork(abstractTransport, rpcObject) {
     // NB this error callback not always executed on error if transport
     // is WsTransport, because WsTransport.submitRpcRequest() only
     // calls this callback for errors that can be detected prior to
-    // sending messsage, not for errors receive from ethrpc server.
+    // sending messsage, not for errors receive from puffsrpc server.
     if (error === null) return;
     if (error.retryable) {
       // if the error is retryable, put it back on the queue (at the head) and
