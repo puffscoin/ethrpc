@@ -10,7 +10,7 @@ module.exports = {
     U_PORT: "uPort",
     LEDGER: "ledger",
     PRIVATE_KEY: "privateKey",
-    UNLOCKED_ETHEREUM_NODE: "unlockedEthereumNode",
+    UNLOCKED_PUFFSCOIN_NODE: "unlockedPuffscoinNode",
     META_MASK: "metaMask",
     TREZOR: "trezor",
     EDGE: "edge",
@@ -35,6 +35,6 @@ module.exports = {
 
   DEFAULT_ETH_CALL_GAS: "0x6230b8",
 
-  ETHER: new BigNumber(10, 10).exponentiatedBy(18),
+  PUFFS: new BigNumber(10, 10).exponentiatedBy(18),
 
 };
