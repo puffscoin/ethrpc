@@ -28,10 +28,10 @@ describe("reducers/network-id", function () {
       state: "3",
       action: {
         type: "SET_NETWORK_ID",
-        networkID: "1",
+        networkID: "420",
       },
       assertions: function (state) {
-        assert.strictEqual(state, "1");
+        assert.strictEqual(state, "420");
       },
     });
   });
