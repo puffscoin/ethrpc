@@ -91,13 +91,13 @@ HttpTransport.prototype.submitRpcRequest = function (rpcObject, errorCallback) {
         error: {"code": -32601, "message": "Method not found"},
       });
     } else if (RETRYABLE_HTTP_RESPONSE_CODES.includes(response.statusCode)) {
-      console.warn("[ethrpc] http-transport response: " + response.statusCode, error, response);
+      console.warn("[puffsrpc] http-transport response: " + response.statusCode, error, response);
       error = new Error("Retryable HTTP: " + response.statusCode);
       error.code = response.statusCode;
       error.retryable = true;
       errorCallback(error);
     } else if (response.statusCode === 429) { // to handle Alchemy (or other) back-off
-      console.warn("[ethrpc] http-transport 429 response", error, response);
+      console.warn("[puffsrpc] http-transport 429 response", error, response);
       error = new Error("Too many requests, retryable");
       error.code = response.statusCode;
       error.retryable = true;
