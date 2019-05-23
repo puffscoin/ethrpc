@@ -11,7 +11,7 @@ var RPCError = require("../errors/rpc-error");
 /**
  * Package and sign a raw transaction.
  * @param {Object} payload Static API data with "params" and "from" set.
- * @param {string} address The sender's Ethereum address.
+ * @param {string} address The sender's PUFFScoin address.
  * @param {buffer|function} privateKeyOrSigner Sender's plaintext private key or signing function.
  * @param {string} accountType One of "privateKey", "uPort", "ledger", or "trezor".
  * @param {function} callback Callback function.
