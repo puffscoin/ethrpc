@@ -6,9 +6,9 @@ var composeReducers = require("./reducers/compose-reducers");
 var version = require("./version");
 
 var puffsrpc = createPuffsrpc(reducer);
-ethrpc.withCustomReducer = function (customReducer) {
+puffsrpc.withCustomReducer = function (customReducer) {
   return createPuffsrpc(composeReducers(customReducer, reducer));
 };
 
 puffsrpc.lib_version = version;
-module.exports = ethrpc;
+module.exports = puffsrpc;
