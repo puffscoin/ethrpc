@@ -1,6 +1,6 @@
 "use strict";
 
-var parseEthereumResponse = require("../decode-response/parse-ethereum-response");
+var parsePuffscoinResponse = require("../decode-response/parse-puffscoin-response");
 var isObject = require("../utils/is-object");
 var RPCError = require("../errors/rpc-error");
 var internalState = require("../internal-state");
@@ -13,7 +13,7 @@ function blockchainMessageHandler(error, jso) {
   return function (dispatch, getState) {
     var debug = getState().debug;
     var outOfBandErrorHandler = internalState.get("outOfBandErrorHandler");
-    if (debug.broadcast) console.log("[ethrpc] RPC response:", JSON.stringify(jso));
+    if (debug.broadcast) console.log("[puffsrpc] RPC response:", JSON.stringify(jso));
 
     if (error !== null) return outOfBandErrorHandler(error);
     if (!isObject(jso)) return outOfBandErrorHandler(new RPCError("INVALID_TRANSPORT_MESSAGE", jso));
@@ -43,7 +43,7 @@ function blockchainMessageHandler(error, jso) {
       var outstandingRequest = internalState.get("outstandingRequests." + jso.id);
       internalState.unset("outstandingRequests." + jso.id);
       if (!isObject(outstandingRequest)) return outOfBandErrorHandler(new RPCError("JSON_RPC_REQUEST_NOT_FOUND", jso));
-      parseEthereumResponse(jso, outstandingRequest.callback);
+      parsePuffscoinResponse(jso, outstandingRequest.callback);
     };
 
     // depending on the type of message it is (request, response, error, invalid) we will handle it differently
