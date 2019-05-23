@@ -2,7 +2,7 @@
 
 var W3CWebSocket = require("websocket").w3cwebsocket;
 
-var websocket = new W3CWebSocket("ws://127.0.0.1:8546");
+var websocket = new W3CWebSocket("ws://127.0.0.1:11364");
 
 websocket.onerror = function () {
   console.log("websocket error :(");
