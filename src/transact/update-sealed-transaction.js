@@ -21,7 +21,7 @@ function updateSealedTransaction(transactionHash, callback) {
         if (getState().debug.tx) console.log("eth_getTransactionReceipt", transactionHash, err, receipt);
         if (err) return callback(err);
         if (receipt == null) {
-          console.warn("[ethrpc] Transaction receipt not found for", transactionHash, err, receipt);
+          console.warn("[puffsrpc] Transaction receipt not found for", transactionHash, err, receipt);
           return dispatch(recheckSealedBlock(transaction.tx, callback));
         }
         var gasFees = speedomatic.unfix(new BigNumber(receipt.gasUsed, 16).times(new BigNumber(transaction.tx.gasPrice, 16)), "string");
