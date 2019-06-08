@@ -1,7 +1,7 @@
 "use strict";
 
 var assign = require("lodash").assign;
-var eth_getTransactionCount = require("../wrappers/eth").getTransactionCount;
+var puffs_getTransactionCount = require("../wrappers/puffs").getTransactionCount;
 var verifyRawTransactionNonce = require("./verify-raw-transaction-nonce");
 var RPCError = require("../errors/rpc-error");
 
@@ -15,7 +15,7 @@ var RPCError = require("../errors/rpc-error");
  */
 function setRawTransactionNonce(packaged, address, callback) {
   return function (dispatch, getState) {
-    dispatch(eth_getTransactionCount([address, "pending"], function (err, transactionCount) {
+    dispatch(puffs_getTransactionCount([address, "pending"], function (err, transactionCount) {
       if (getState().debug.tx) console.log("transaction count:", address, transactionCount);
       if (err) return callback(err);
       if (transactionCount == null) return callback(new RPCError("NO_RESPONSE"));
