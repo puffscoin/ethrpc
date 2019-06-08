@@ -1,7 +1,7 @@
 "use strict";
 
 var speedomatic = require("speedomatic");
-var eth_sendRawTransaction = require("../wrappers/eth").sendRawTransaction;
+var puffs_sendRawTransaction = require("../wrappers/puffs").sendRawTransaction;
 var packageAndSignRawTransaction = require("./package-and-sign-raw-transaction");
 var handleRawTransactionError = require("./handle-raw-transaction-error");
 var sha3 = require("../utils/sha3");
@@ -62,7 +62,7 @@ function packageAndSubmitRawTransaction(payload, address, privateKeyOrSigner, ac
             status: "sending",
           },
         });
-        dispatch(eth_sendRawTransaction(signedRawTransaction, handleRawTransactionResponse));
+        dispatch(puffs_sendRawTransaction(signedRawTransaction, handleRawTransactionResponse));
       }
     }));
   };
