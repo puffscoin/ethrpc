@@ -1,6 +1,6 @@
 "use strict";
 
-var eth = require("../wrappers/eth");
+var puffs = require("../wrappers/puffs");
 var packageRequest = require("../encode-request/package-request");
 var isObject = require("../utils/is-object");
 var RPCError = require("../errors/rpc-error");
@@ -12,11 +12,11 @@ function callOrSendTransaction(payload, callback) {
       if (err) return callback(err);
       if (getState().debug.broadcast) console.log("packaged:", packaged);
       if (payload.estimateGas) {
-        dispatch(eth.estimateGas(packaged, callback));
+        dispatch(puffs.estimateGas(packaged, callback));
       } else if (payload.send) {
-        dispatch(eth.sendTransaction(packaged, callback));
+        dispatch(puffs.sendTransaction(packaged, callback));
       } else {
-        dispatch(eth.call([packaged, "latest"], callback));
+        dispatch(puffs.call([packaged, "latest"], callback));
       }
     }));
   };
