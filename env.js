@@ -14,7 +14,7 @@ puffsrpc.setDebugOptions({ connect: true });
 
 puffsrpc.connect(connectOptions, function (err) {
   if (err) return console.error(err);
-  puffsrpc.eth.coinbase(function (err, coinbase) {
+  puffsrpc.puffs.coinbase(function (err, coinbase) {
     if (err) return console.error(err);
     if (coinbase == null) console.log("coinbase address not found");
   });
