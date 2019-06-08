@@ -66,8 +66,8 @@ module.exports.getRpcConfiguration = function (transportType, transportAddress) 
 module.exports.createStubRpcServerWithRequiredResponders = function (transportType, transportAddress) {
   var stubRpcServer = StubServer.createStubServer(transportType, transportAddress);
   stubRpcServer.addResponder(function (request) {
-    if (request.method === "eth_gasPrice") return "0x09184e72a000";
-    if (request.method === "eth_estimateGas") return "0x123456";
+    if (request.method === "puffs_gasPrice") return "0x09184e72a000";
+    if (request.method === "puffs_estimateGas") return "0x123456";
   });
   return stubRpcServer;
 };
