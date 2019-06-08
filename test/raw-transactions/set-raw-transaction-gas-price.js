@@ -11,7 +11,7 @@ describe("raw-transactions/set-raw-transaction-gas-price", function () {
     it(t.description, function () {
       var store = mockStore(t.state || {});
       var setRawTransactionGasPrice = proxyquire("../../src/raw-transactions/set-raw-transaction-gas-price.js", {
-        "../wrappers/eth": {
+        "../wrappers/puffs": {
           gasPrice: function (params, callback) {
             return function () {
               callback(null, t.blockchain.gasPrice);
