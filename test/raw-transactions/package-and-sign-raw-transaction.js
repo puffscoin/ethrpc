@@ -29,7 +29,7 @@ describe("raw-transactions/package-and-sign-raw-transaction", function () {
         "./package-raw-transaction": proxyquire("../../src/raw-transactions/package-raw-transaction.js", {
           "../encode-request/package-request": proxyquire("../../src/encode-request/package-request.js", {
             "./get-estimated-gas-with-buffer": proxyquire("../../src/encode-request/get-estimated-gas-with-buffer.js", {
-              "../wrappers/eth": t.stub.eth,
+              "../wrappers/puffs": t.stub.puffs,
             }),
           }),
         }),
@@ -56,7 +56,7 @@ describe("raw-transactions/package-and-sign-raw-transaction", function () {
       accountType: ACCOUNT_TYPES.PRIVATE_KEY,
     },
     stub: {
-      eth: {
+      puffs: {
         estimateGas: function (p, callback) {
           callback(null, "0x4a7680");
         },
@@ -98,7 +98,7 @@ describe("raw-transactions/package-and-sign-raw-transaction", function () {
       accountType: ACCOUNT_TYPES.LEDGER,
     },
     stub: {
-      eth: {
+      puffs: {
         estimateGas: function (p, callback) {
           callback(null, "0x123456");
         },
@@ -140,7 +140,7 @@ describe("raw-transactions/package-and-sign-raw-transaction", function () {
       accountType: ACCOUNT_TYPES.EDGE,
     },
     stub: {
-      eth: {
+      puffs: {
         estimateGas: function (p, callback) {
           callback(null, "0x123456");
         },
@@ -177,7 +177,7 @@ describe("raw-transactions/package-and-sign-raw-transaction", function () {
       accountType: ACCOUNT_TYPES.U_PORT,
     },
     stub: {
-      eth: {
+      puffs: {
         estimateGas: function (p, callback) {
           callback(null, "0x123456");
         },
@@ -219,7 +219,7 @@ describe("raw-transactions/package-and-sign-raw-transaction", function () {
       accountType: ACCOUNT_TYPES.TREZOR,
     },
     stub: {
-      eth: {
+      puffs: {
         estimateGas: function (p, callback) {
           callback(null, "0x123456");
         },
