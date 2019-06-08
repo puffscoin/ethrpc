@@ -1,6 +1,6 @@
 "use strict";
 
-var eth_unsubscribe = require("../wrappers/eth").unsubscribe;
+var puffs_unsubscribe = require("../wrappers/puffs").unsubscribe;
 var internalState = require("../internal-state");
 var storeObservers = require("../store-observers");
 var logError = require("../utils/log-error");
@@ -14,7 +14,7 @@ function unsubscribeFromNewBlockNotifications() {
     dispatch({ type: "CLEAR_NEW_HEADS_SUBSCRIPTION" });
     if (newHeadsSubscription.id != null) {
       dispatch(storeObservers.remove(newHeadsSubscription.id));
-      dispatch(eth_unsubscribe(newHeadsSubscription.id, logError));
+      dispatch(puffs_unsubscribe(newHeadsSubscription.id, logError));
     }
   };
 }
