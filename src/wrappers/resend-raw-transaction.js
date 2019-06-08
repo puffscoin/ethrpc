@@ -2,7 +2,7 @@
 
 var speedomatic = require("speedomatic");
 var clone = require("clone");
-var eth = require("../wrappers/eth");
+var puffs = require("../wrappers/puffs");
 var signRawTransactionWithKey = require("../raw-transactions/sign-raw-transaction-with-key");
 
 function resendRawTransaction(transaction, privateKey, gasPrice, gasLimit, callback) {
@@ -11,7 +11,7 @@ function resendRawTransaction(transaction, privateKey, gasPrice, gasLimit, callb
     if (gasPrice) newTransaction.gasPrice = speedomatic.hex(gasPrice);
     if (gasLimit) newTransaction.gasLimit = speedomatic.hex(gasLimit);
     var signedTransaction = signRawTransactionWithKey(newTransaction, privateKey);
-    return dispatch(eth.sendRawTransaction(signedTransaction, callback));
+    return dispatch(puffs.sendRawTransaction(signedTransaction, callback));
   };
 }
 
