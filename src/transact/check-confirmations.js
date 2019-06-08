@@ -1,6 +1,6 @@
 "use strict";
 
-var eth_blockNumber = require("../wrappers/eth").blockNumber;
+var puffs_blockNumber = require("../wrappers/puffs").blockNumber;
 var completeTx = require("../transact/complete-tx");
 var waitForNextPoll = require("../transact/wait-for-next-poll");
 var RPCError = require("../errors/rpc-error");
@@ -8,7 +8,7 @@ var RPCError = require("../errors/rpc-error");
 function checkConfirmations(tx, numConfirmations, callback) {
   return function (dispatch, getState) {
     var minedBlockNumber = parseInt(tx.blockNumber, 16);
-    dispatch(eth_blockNumber(function (err, currentBlockNumber) {
+    dispatch(puffs_blockNumber(function (err, currentBlockNumber) {
       if (err) return callback(err);
       if (currentBlockNumber == null) return callback(new RPCError("NO_RESPONSE"));
       if (getState().debug.tx) {
