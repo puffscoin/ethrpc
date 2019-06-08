@@ -31,7 +31,7 @@ WsTransport.prototype.connect = function (initialCallback) {
     initialCallbackCalled = true;
     initialCallback(err);
   };
-  var origin = isNode ? "http://127.0.0.1:8080" : undefined; // Workaround for a bug in geth: https://github.com/ethereum/go-ethereum/issues/16608
+  var origin = isNode ? "http://127.0.0.1:8080" : undefined; 
   this.webSocketClient = new WebSocketClient(this.address, [], origin, undefined, { timeout: this.timeout }, this.websocketClientConfig);
   var messageHandler = function () {};
   this.webSocketClient.onopen = function () {
@@ -45,14 +45,14 @@ WsTransport.prototype.connect = function (initialCallback) {
     var response = JSON.parse(message.data);
     var outstandingRequest = internalState.get("outstandingRequests." + response.id);
     if (outstandingRequest != null && outstandingRequest.jso != null
-      && outstandingRequest.jso.method === "eth_call" && response.result === "0x") {
+      && outstandingRequest.jso.method === "puffs_call" && response.result === "0x") {
       var retries = outstandingRequest.retries || 0;
       if (retries < this.maxRetries) {
         outstandingRequest.retries = retries + 1;
         self.submitWork(outstandingRequest.jso);
         return;
       }
-      return outstandingRequest.callback(new Error(errors.ETH_CALL_FAILED.message));
+      return outstandingRequest.callback(new Error(errors.PUFFS_CALL_FAILED.message));
     }
     messageHandler(null, JSON.parse(message.data));
   }.bind(this);
