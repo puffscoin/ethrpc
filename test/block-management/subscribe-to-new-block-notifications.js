@@ -10,7 +10,7 @@ describe("block-management/subscribe-to-new-block-notifications", function () {
   it("subscription succeeds", function (done) {
     var store = mockStore({});
     store.dispatch(proxyquire("../../src/block-management/subscribe-to-new-block-notifications.js", {
-      "../wrappers/eth": {
+      "../wrappers/puffs": {
         subscribe: function (p, callback) {
           return function (/*dispatch*/) {
             assert.deepEqual(p, ["newHeads", {}]);
@@ -48,7 +48,7 @@ describe("block-management/subscribe-to-new-block-notifications", function () {
   it("subscription fails", function (done) {
     var store = mockStore({});
     store.dispatch(proxyquire("../../src/block-management/subscribe-to-new-block-notifications.js", {
-      "../wrappers/eth": {
+      "../wrappers/puffs": {
         subscribe: function (p, callback) {
           return function (/*dispatch*/) {
             assert.deepEqual(p, ["newHeads", {}]);
