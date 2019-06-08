@@ -19,7 +19,7 @@ function blockchainMessageHandler(error, jso) {
     if (!isObject(jso)) return outOfBandErrorHandler(new RPCError("INVALID_TRANSPORT_MESSAGE", jso));
 
     var subscriptionHandler = function () {
-      if (jso.method !== "eth_subscription") return outOfBandErrorHandler(new RPCError("UNSUPPORTED_RPC_REQUEST", jso));
+      if (jso.method !== "puffs_subscription") return outOfBandErrorHandler(new RPCError("UNSUPPORTED_RPC_REQUEST", jso));
       if (typeof jso.params.subscription !== "string") return outOfBandErrorHandler(new RPCError("NO_SUBSCRIPTION_ID", jso));
       if (jso.params.result == null) return outOfBandErrorHandler(new RPCError("NO_SUBSCRIPTION_RESULT", jso));
       var storeObserver = getState().storeObservers[jso.params.subscription];
