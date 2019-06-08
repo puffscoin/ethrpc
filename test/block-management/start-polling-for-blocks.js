@@ -12,7 +12,7 @@ describe("block-management/start-polling-for-blocks", function () {
   it("start polling", function (done) {
     var store = mockStore({ configuration: { pollingIntervalMilliseconds: 1 } });
     store.dispatch(proxyquire("../../src/block-management/start-polling-for-blocks.js", {
-      "../wrappers/eth": {
+      "../wrappers/puffs": {
         getBlockByNumber: function (p, callback) {
           return function (/*dispatch*/) {
             assert.deepEqual(p, ["latest", false]);
