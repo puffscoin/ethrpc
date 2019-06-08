@@ -13,7 +13,7 @@ describe("raw-transactions/package-raw-transaction", function () {
       var packageRawTransaction = proxyquire("../../src/raw-transactions/package-raw-transaction.js", {
         "../encode-request/package-request": proxyquire("../../src/encode-request/package-request.js", {
           "./get-estimated-gas-with-buffer": proxyquire("../../src/encode-request/get-estimated-gas-with-buffer.js", {
-            "../wrappers/eth": t.stub.eth,
+            "../wrappers/puffs": t.stub.puffs,
           }),
         }),
       });
@@ -38,7 +38,7 @@ describe("raw-transactions/package-raw-transaction", function () {
       networkID: "7",
     },
     stub: {
-      eth: {
+      puffs: {
         estimateGas: function (p, callback) {
           assert.deepEqual(p, {
             from: "0x0000000000000000000000000000000000000b0b",
@@ -80,7 +80,7 @@ describe("raw-transactions/package-raw-transaction", function () {
       networkID: "7",
     },
     stub: {
-      eth: {
+      puffs: {
         estimateGas: assert.fail,
       },
     },
