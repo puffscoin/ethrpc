@@ -1,11 +1,11 @@
 "use strict";
 
 var speedomatic = require("speedomatic");
-var eth_coinbase = require("./eth").coinbase;
+var puffs_coinbase = require("./puffs").coinbase;
 
 function setCoinbase(callback) {
   return function (dispatch) {
-    dispatch(eth_coinbase(null, function (err, coinbase) {
+    dispatch(puffs_coinbase(null, function (err, coinbase) {
       if (err) return callback(err);
       if (coinbase != null) {
         dispatch({ type: "SET_COINBASE", address: speedomatic.formatPuffscoinAddress(coinbase) });
