@@ -3,7 +3,7 @@
 var speedomatic = require("speedomatic");
 var BigNumber = require("bignumber.js");
 var recheckSealedBlock = require("./recheck-sealed-block");
-var eth_getTransactionReceipt = require("../wrappers/eth").getTransactionReceipt;
+var puffs_getTransactionReceipt = require("../wrappers/puffs").getTransactionReceipt;
 var constants = require("../constants");
 
 function updateSealedTransaction(transactionHash, callback) {
@@ -18,7 +18,7 @@ function updateSealedTransaction(transactionHash, callback) {
       if (err) return callback(err);
       if (!isBlockIncluded) return callback(null);
       dispatch(eth_getTransactionReceipt(transactionHash, function (err, receipt) {
-        if (getState().debug.tx) console.log("eth_getTransactionReceipt", transactionHash, err, receipt);
+        if (getState().debug.tx) console.log("puffs_getTransactionReceipt", transactionHash, err, receipt);
         if (err) return callback(err);
         if (receipt == null) {
           console.warn("[puffsrpc] Transaction receipt not found for", transactionHash, err, receipt);
