@@ -3,13 +3,13 @@
     "message": "Unexpectedly received a message from the transport that was not an object"
   },
   "UNSUPPORTED_RPC_REQUEST": {
-    "message": "Received an RPC request that was not an eth_subscription"
+    "message": "Received an RPC request that was not an puffs_subscription"
   },
   "NO_SUBSCRIPTION_ID": {
-    "message": "Received an eth_subscription request without a subscription id"
+    "message": "Received an puffs_subscription request without a subscription id"
   },
   "NO_SUBSCRIPTION_RESULT": {
-    "message": "Received an eth_subscription request without a result"
+    "message": "Received an puffs_subscription request without a result"
   },
   "INVALID_MESSAGE_ID": {
     "message": "Received a message from the blockchain that did not have a valid id"
@@ -74,7 +74,7 @@
   "COINBASE_NOT_SET": {
     "message": "Coinbase account not set"
   },
-  "ETH_CALL_FAILED": {
-    "message": "eth_call returned no data (0x)"
+  "PUFFS_CALL_FAILED": {
+    "message": "puffs_call returned no data (0x)"
   }
 }
