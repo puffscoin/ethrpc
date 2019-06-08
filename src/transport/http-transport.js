@@ -67,10 +67,10 @@ HttpTransport.prototype.submitRpcRequest = function (rpcObject, errorCallback) {
       errorCallback(error);
     } else if (response.statusCode === 200) {
       internalState.set("retry429Attempts." + response.id, 0);
-      if (rpcObject.method === "eth_call" && body.result === "0x") {
+      if (rpcObject.method === "puffs_call" && body.result === "0x") {
         var outstandingRequest = internalState.get("outstandingRequests." + response.id) || {};
         var retries = outstandingRequest.retries || 0;
-        error = new Error(errors.ETH_CALL_FAILED.message);
+        error = new Error(errors.PUFFS_CALL_FAILED.message);
         if (retries < this.maxRetries) {
           internalState.set("outstandingRequests." + response.id, Object.assign({}, outstandingRequest, {retries: retries + 1}));
           error.retryable = true;
@@ -107,7 +107,7 @@ HttpTransport.prototype.submitRpcRequest = function (rpcObject, errorCallback) {
       if (retry429Attempts < MAX_RETRY_DELAY_INCREASES) internalState.set("retry429Attempts." + response.id, retry429Attempts + 1);
       setTimeout(function () { errorCallback(error); }, retryDelay);
     } else {
-      console.error("[ethrpc] http-transport unexpected status code", response);
+      console.error("[puffsrpc] http-transport unexpected status code", response);
       error = new Error("Unexpected status code.");
       error.code = response.statusCode;
       error.address = this.address;
