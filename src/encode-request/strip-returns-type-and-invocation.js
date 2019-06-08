@@ -2,7 +2,7 @@
 
 var stripReturnsTypeAndInvocation = function (tx) {
   var returns;
-  if (tx.method === "eth_coinbase") return "address";
+  if (tx.method === "puffs_coinbase") return "address";
   if (tx.params !== undefined && tx.params.length && tx.params[0]) {
     if (tx.params[0].returns) {
       returns = tx.params[0].returns;
