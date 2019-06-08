@@ -5,7 +5,7 @@ var BigNumber = require("bignumber.js");
 var speedomatic = require("speedomatic");
 var getEstimatedGasWithBuffer = require("./get-estimated-gas-with-buffer");
 var processRequestParameters = require("./process-request-parameters");
-var DEFAULT_ETH_CALL_GAS = require("../constants").DEFAULT_ETH_CALL_GAS;
+var DEFAULT_PUFFS_CALL_GAS = require("../constants").DEFAULT_PUFFS_CALL_GAS;
 
 /**
  * Package a transaction payload so that it can be sent to the network.
@@ -32,7 +32,7 @@ function packageRequest(payload, callback) {
     }
     if (payload.gas != null) return callback(null, assign(packaged, { gas: speedomatic.hex(payload.gas) }));
     if (!payload.send) {
-      return callback(null, assign(packaged, { gas: (getState().currentBlock || {}).gasLimit || DEFAULT_ETH_CALL_GAS }));
+      return callback(null, assign(packaged, { gas: (getState().currentBlock || {}).gasLimit || DEFAULT_PUFFS_CALL_GAS }));
     }
     dispatch(getEstimatedGasWithBuffer(packaged, function (err, estimatedGasWithBuffer) {
       if (err) return callback(err);
@@ -42,13 +42,13 @@ function packageRequest(payload, callback) {
         gas = speedomatic.prefixHex(estimatedGasWithBuffer.toString(16));
       } else {
         var currentBlockGasLimit = currentBlock.gasLimit;
-        var defaultGas = new BigNumber(DEFAULT_ETH_CALL_GAS, 16);
+        var defaultGas = new BigNumber(DEFAULT_PUFFS_CALL_GAS, 16);
         gas = new BigNumber(currentBlockGasLimit, 16).lt(estimatedGasWithBuffer) ?
           currentBlockGasLimit :
           speedomatic.prefixHex(estimatedGasWithBuffer.toString(16));
         gas = new BigNumber(gas, 16).lt(defaultGas) ?
           gas :
-          DEFAULT_ETH_CALL_GAS;
+          DEFAULT_PUFFS_CALL_GAS;
       }
       if (getState().debug.tx) {
         console.log("Adding", new BigNumber(gas, 16).toFixed(), "of", new BigNumber(currentBlockGasLimit, 16).toFixed(), "gas for", payload.name);
