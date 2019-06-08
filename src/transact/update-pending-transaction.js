@@ -1,11 +1,11 @@
 "use strict";
 
-var eth_getTransactionByHash = require("../wrappers/eth").getTransactionByHash;
+var puffs_getTransactionByHash = require("../wrappers/puffs").getTransactionByHash;
 var updateSealedTransaction = require("../transact/update-sealed-transaction");
 
 function updatePendingTransaction(transactionHash, callback) {
   return function (dispatch, getState) {
-    dispatch(eth_getTransactionByHash(transactionHash, function (err, onChainTransaction) {
+    dispatch(puffs_getTransactionByHash(transactionHash, function (err, onChainTransaction) {
       if (err) return callback(err);
       dispatch({ type: "UPDATE_ON_CHAIN_TRANSACTION", hash: transactionHash, data: onChainTransaction });
 
