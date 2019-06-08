@@ -168,7 +168,7 @@ describe("tests that only work against stub server", function () {
         });
 
         it("sha3", function (done) {
-          // sha3 is optimized to do the hash locally rather than on the ethereum node, so we don't need any setup
+          // sha3 is optimized to do the hash locally rather than on the PUFFScoin node, so we don't need any setup
           assert.strictEqual(rpc.sha3("0x68656c6c6f20776f726c64", "hex"), "0x47173285a8d7341e5e972fc677286384f802f8ef42a5ec5f03bbfa254cb01fad");
           assert.strictEqual(rpc.sha3("hello world", "utf8"), "0x47173285a8d7341e5e972fc677286384f802f8ef42a5ec5f03bbfa254cb01fad");
           done();
