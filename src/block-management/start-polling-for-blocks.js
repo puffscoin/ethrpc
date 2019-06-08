@@ -1,6 +1,6 @@
 "use strict";
 
-var eth_getBlockByNumber = require("../wrappers/eth").getBlockByNumber;
+var puffs_getBlockByNumber = require("../wrappers/puffs").getBlockByNumber;
 var onNewBlock = require("./on-new-block");
 var validateBlock = require("../validate/validate-block");
 var observeCurrentBlockStateChanges = require("../store-observers/current-block");
@@ -13,7 +13,7 @@ function startPollingForBlocks() {
     }));
     var newBlockPollingInterval = setInterval(function () {
       if (getState().debug.broadcast) console.log("Polling for latest block...");
-      dispatch(eth_getBlockByNumber(["latest", false], function (err, block) {
+      dispatch(puffs_getBlockByNumber(["latest", false], function (err, block) {
         if (err) return console.error(err);
         if (block === null) return console.warn(new RPCError("BLOCK_NOT_FOUND"));
         if (!validateBlock(block)) return console.error(new RPCError("INVALID_BLOCK", { block: block }));
