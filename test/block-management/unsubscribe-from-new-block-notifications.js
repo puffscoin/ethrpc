@@ -15,7 +15,7 @@ describe("block-management/unsubscribe-from-new-block-notifications", function (
       storeObservers: { NEW_HEADS_SUBSCRIPTION_ID: { reaction: "SET_CURRENT_BLOCK", unsubscribeToken: 1 } },
     });
     store.dispatch(proxyquire("../../src/block-management/unsubscribe-from-new-block-notifications.js", {
-      "../wrappers/eth": {
+      "../wrappers/puffs": {
         unsubscribe: function (subscriptionID, callback) {
           return function (dispatch, getState) {
             assert.strictEqual(subscriptionID, mockNewHeadsSubscription.id);
