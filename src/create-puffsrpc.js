@@ -160,7 +160,7 @@ var createPuffsrpc = function (reducer) {
     getUncleByBlockNumberAndIndex: function (blockNumber, index, callback) { return dispatch(puffs.getUncleByBlockNumberAndIndex([validateAndDefaultBlockNumber(blockNumber), index], callback)); },
     getUncle: function (blockNumber, index, callback) { return this.getUncleByBlockNumberAndIndex(blockNumber, index, callback); },
     getUncleCountByBlockHash: function (blockHash, callback) { return dispatch(puffs.getUncleCountByBlockHash([blockHash], callback)); },
-    getUncleCountByBlockNumber: function (blockNumber, callback) { return dispatch(eth.getUncleCountByBlockNumber([validateAndDefaultBlockNumber(blockNumber)], callback)); },
+    getUncleCountByBlockNumber: function (blockNumber, callback) { return dispatch(puffs.getUncleCountByBlockNumber([validateAndDefaultBlockNumber(blockNumber)], callback)); },
     getUncleCount: function (blockNumber, callback) { return this.getUncleCountByBlockNumber(blockNumber, callback); },
     hashrate: function (callback) { return dispatch(puffs.hashrate(null, callback)); },
     mining: function (callback) { return dispatch(puffs.mining(null, callback)); },
@@ -195,7 +195,7 @@ var createPuffsrpc = function (reducer) {
       validateTransaction(transaction);
       return dispatch(puffs.sendTransaction([transaction], callback));
     },
-    sign: function (address, data, callback) { return dispatch(eth.sign([address, data], callback)); },
+    sign: function (address, data, callback) { return dispatch(puffs.sign([address, data], callback)); },
     signTransaction: function (transaction, callback) {
       validateTransaction(transaction);
       return dispatch(puffs.signTransaction([transaction], callback));
@@ -209,7 +209,7 @@ var createPuffsrpc = function (reducer) {
     subscribeLogs: function (options, callback) { return this.subscribe("logs", options, callback); },
     subscribeNewHeads: function (callback) { return this.subscribe("newHeads", null, callback); },
     subscribeNewPendingTransactions: function (callback) { return this.subscribe("newPendingTransactions", null, callback); },
-    syncing: function (callback) { return dispatch(eth.syncing(null, callback)); },
+    syncing: function (callback) { return dispatch(puffs.syncing(null, callback)); },
     uninstallFilter: function (filter, callback) { return dispatch(puffs.uninstallFilter([filter], callback)); },
     unsubscribe: function (label, callback) { return dispatch(puffs.unsubscribe([label], callback)); },
 
