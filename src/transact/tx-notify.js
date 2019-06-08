@@ -1,10 +1,10 @@
 "use strict";
 
-var eth_getTransaction = require("../wrappers/eth").getTransaction;
+var puffs_getTransaction = require("../wrappers/puffs").getTransaction;
 
 function txNotify(txHash, callback) {
   return function (dispatch, getState) {
-    dispatch(eth_getTransaction(txHash, function (err, transaction) {
+    dispatch(puffs_getTransaction(txHash, function (err, transaction) {
       if (err) return callback(err);
       if (transaction) return callback(null, transaction);
       dispatch({ type: "DECREMENT_HIGHEST_NONCE" });
