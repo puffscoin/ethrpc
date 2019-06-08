@@ -15,7 +15,7 @@ describe("raw-transaction/package-and-submit-raw-transaction", function () {
       var store = mockStore(t.state || {});
       var packageAndSubmitRawTransaction = proxyquire("../../src/raw-transactions/package-and-submit-raw-transaction.js", {
         "./package-and-sign-raw-transaction": t.stub.packageAndSignRawTransaction,
-        "../wrappers/eth": {
+        "../wrappers/puffs": {
           sendRawTransaction: t.stub.sendRawTransaction.bind(t.stub),
         },
       });
