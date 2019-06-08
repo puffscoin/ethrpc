@@ -12,7 +12,7 @@ var makeRequestPayload = function (command, params, prefix) {
   if (prefix === "null" || prefix === null) {
     method = command.toString();
   } else {
-    method = (prefix || "eth_") + command.toString();
+    method = (prefix || "puffs_") + command.toString();
   }
   var payload = {
     id: numRequests++,
