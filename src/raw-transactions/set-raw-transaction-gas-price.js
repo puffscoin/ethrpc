@@ -1,7 +1,7 @@
 "use strict";
 
 var assign = require("lodash").assign;
-var eth_gasPrice = require("../wrappers/eth").gasPrice;
+var puffs_gasPrice = require("../wrappers/puffs").gasPrice;
 
 /**
  * Set the gas price for a raw transaction.
@@ -12,7 +12,7 @@ var eth_gasPrice = require("../wrappers/eth").gasPrice;
 var setRawTransactionGasPrice = function (packaged, callback) {
   return function (dispatch) {
     if (packaged.gasPrice != null) return callback(null, packaged);
-    dispatch(eth_gasPrice(null, function (err, gasPrice) {
+    dispatch(puffs_gasPrice(null, function (err, gasPrice) {
       if (err) return callback(err);
       callback(null, assign({}, packaged, { gasPrice: gasPrice }));
     }));
